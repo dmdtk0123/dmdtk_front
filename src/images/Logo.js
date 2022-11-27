@@ -19,7 +19,7 @@ const Logo = ({ width, height }) => {
                 height="330"
                 x="0"
                 y="0"
-                href="https://user-images.githubusercontent.com/78197675/200326332-a529c460-442e-4efd-b0b8-8d66df3a517e.jpg"
+                href="https://user-images.githubusercontent.com/88575220/204129225-3aade454-2a7a-4415-b91e-d3bf76500571.png"
             />
         </svg>
   );
