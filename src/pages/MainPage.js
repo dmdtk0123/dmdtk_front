@@ -62,7 +62,7 @@ const MainPage = () => {
                         data.members.map((u) => <p key={u.id}>{u.name}</p>)
                     )} */}
 
-                    <Link to='/start'>
+                    <Link to='/posterForm'>
                         <Button type="button" fontSize="18px">
                             <span>시작하기</span>
                         </Button>
