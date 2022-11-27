@@ -55,7 +55,7 @@ const MainPage = () => {
                     <h1>Create your own poster with AI</h1>
                     <p>어쩌구 저쩌구 하느라 힘들지 않으셨나요?</p>
                     <p>Mappel에서 나만의 포스터를 만들어 보세요!</p>
-                    <p>남들과 차별화된 포스터를 AI가 쉽고 빠르게 만들어 줍니다.</p>
+                    <p>남들과 차별화된  AI가 쉽고 빠르게 만들어 줍니다.</p>
                     {/* { (typeof data.members === 'undefined') ? (
                         <p>loading...</p>
                     ) : (
