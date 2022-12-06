@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import Button from "../components/Button";
@@ -37,20 +37,50 @@ const PosterForm = () => {
   const handleSubmitForm = (e) => {
     e.preventDefault();
 
-    const data = new FormData();
+    /* 사진 데이터 보내기 */
+    const imageData = new FormData();
     for (let i = 0; i < postImages.length; i++) {
-      data.append("files", postImages[i]);
+      imageData.append("files", postImages[i]);
     }
-    data.append("productDetail", document.getElementsByName("productDetail"));
-    data.append("productNotice", document.getElementsByName("productNotice"));
-    data.append("productPrice", document.getElementsByName("productPrice"));
 
-    console.log(data.get("files"));
+    // fetch("http://localhost:5000/upload", {
+    //   method: "POST",
+    //   body: imageData,
+    // })
+    //   .then((response) => {
+    //     console.log("response:", response);
+    //     if (response.redirected === true) {
+    //       window.location.href = response.url;
+    //     }
+    //   })
+    //   .then((data) => {
+    //     console.log("data:", data);
+    //   })
+    //   .catch((error) => {
+    //     console.log("error:", error);
+    //   });
+
+    // e.preventDefault();
+
+    const textData = new FormData();
+    textData.append(
+      "productDetail",
+      document.getElementById("productDetail").value
+    );
+    textData.append(
+      "productNotice",
+      document.getElementById("productNotice").value
+    );
+    textData.append(
+      "productPrice",
+      document.getElementById("productPrice").value
+    );
+
+    console.log(textData.get("productDetail"));
 
     fetch("http://localhost:5000/upload", {
       method: "POST",
-      body: data,
-      redirect: "follow",
+      body: textData,
     })
       .then((response) => {
         console.log("response:", response);
@@ -65,7 +95,7 @@ const PosterForm = () => {
         console.log("error:", error);
       });
 
-      navigate("/design");
+    // navigate("/design");
   };
 
   return (
@@ -100,13 +130,13 @@ const PosterForm = () => {
         <AllTextInputWrapper>
           <div>
             <p>제품에 대한 상세 설명을 해주세요.</p>
-            <TextareaInputWrapper type="textarea" name="productDetail" />
+            <TextareaInputWrapper type="textarea" id="productDetail" />
 
             <p>제품에 대한 유의사항을 작성 해주세요.</p>
-            <TextareaInputWrapper type="textarea" name="productNotice" />
+            <TextareaInputWrapper type="textarea" id="productNotice" />
 
             <p>가격표를 작성해주세요.</p>
-            <TextareaInputWrapper type="textarea" name="productPrice" />
+            <TextareaInputWrapper type="textarea" id="productPrice" />
           </div>
         </AllTextInputWrapper>
       </FormWrapper>
