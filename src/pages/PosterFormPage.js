@@ -1,164 +1,113 @@
 import React, { useState, useRef } from 'react'
-import styled from "styled-components"
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components'
 
-import Button from '../components/Button'
+import PosterImgForm from '../components/PosterImgForm'
+import PosterTextForm from '../components/PosterTextForm'
+
+import Manual from '../layout/Manual'
 import TextTitle from '../components/TextTitle'
-import Images from '../components/Images'
+import Button from '../components/Button'
 
 const PosterFormPage = () => {
     const navigate = useNavigate();
-    const selectFile = useRef("");
-    const [postImages, setPostImages] = useState([]); // 서버로 보낼 이미지 데이터
-    const [showImages, setshowImages] = useState([]); // 프리뷰 보여줄 이미지 데이터
 
-    const handleImageUpload = e => {    // 중복된 이미지가 들어올 경우 console창에 에러발생 뜸
-      let fileArr = e.target.files;
-
-      let fileURLs = [];
-      // let filesLength = fileArr.length > 30 ? 30 : fileArr.length;    // 최대 30개
-      
-      for (let i = 0; i < fileArr.length; i++){
-          let file = fileArr[i];
-          
-          let reader = new FileReader();
-          reader.onload = () => {
-              fileURLs[i] = reader.result;
-              setshowImages([...showImages, ...fileURLs]);
-          }
-          reader.readAsDataURL(file);
-      }
-
-      setPostImages([...postImages, ...fileArr]);
-    }
+    /** submit 처리 **/
+    const [images, setImages] = useState([]);
+    const [texts, setTexts] = useState({
+        productDetail: "",
+        productNotice: "",
+        productPrice: "",
+    });
 
     const handleSubmitForm = e => {
-      e.preventDefault();
-
-      const data = new FormData();
-      for (let i = 0; i < postImages.length; i++) {
-        data.append("images", postImages[i]);
-      }
-      data.append("productDetail", document.getElementsByName("productDetail"))
+        e.preventDefault();
   
-      fetch('http://localhost:5000/upload', {
-        method: 'POST',
-        body: data,
-        redirect: 'follow',
-      })
-      .then((response) => {
-            console.log("response:", response)
-            if (response.redirected === true) {
-                window.location.href = response.url
-            }
+        const data = new FormData();
+        for (let i = 0; i < images.length; i++) {
+          data.append("images", images[i]);
+        }
+        data.append("productDetail", document.getElementsByName("productDetail"))
+        data.append("productNotice", document.getElementsByName("productNotice"))
+        data.append("productPrice", document.getElementsByName("productPrice"))
+    
+        fetch('http://localhost:5000/upload', {
+          method: 'POST',
+          body: data,
+        //   redirect: 'follow',
         })
-      .then((data) => {
-            console.log("data:", data)
-        })
-      .catch((error) => {
-            console.log("error:", error)
-        });
+        .then((response) => {
+              console.log("response:", response.json())
+            //   if (response.redirected === true) {
+            //       window.location.href = response.url
+            //   }
+          })
+        .then((obj) => {
+            if(obj.result === 'success')
+              console.log("obj:", obj)
+          })
+        .catch((error) => {
+              console.log("error:", error)
+          });
+  
+        navigate("/design");
+      }
 
-      // this.props.navigation.navigate("/design");
-    }
+    /** 사이드 메뉴 보이기 **/
+    const [height, setHeight] = useState(0);
+    const [visibleL, setVisibleL] = useState(false);
+    const [visibleR, setVisibleR] = useState(false);
+
+    const assignLHeight = (node) => {
+        if (node && !height) {
+        setHeight(node.clientHeight);
+        setVisibleL(false);
+        }
+    };
+
+    const assignRHeight = (node) => {
+        if (node && !height) {
+        setHeight(node.clientHeight);
+        setVisibleR(false);
+        }
+    };
 
     return (
-      <>
-        <TextWrapper>포스터에 들어갈 사진과 텍스트를 넣어주세요.</TextWrapper>
-        <FormWrapper id='posterForm' onSubmit={handleSubmitForm}>
-          <ImageInputWrapper>
-            <TextTitle>
-              <span>사진</span>
-            </TextTitle>
+        <form onSubmit={handleSubmitForm}
+            style={{textAlign: 'center'}}>
+            <h3>포스터에 들어갈 사진과 텍스트를 넣어주세요.</h3>
+            <Wrapper>
+                <Manual visible={visibleL} ref={assignLHeight} height={height} />
+                <Body>
+                    <div>
+                        <TextTitle visible={visibleL} setVisible={setVisibleL}><span>사진</span></TextTitle>
+                    </div>
+                    <div>
+                        <TextTitle visible={visibleR} setVisible={setVisibleR}><span>텍스트</span></TextTitle>
+                    </div>
+                    <PosterImgForm name="images" value={images} onChange={(e) => setImages(e.target.value)} />
+                    <PosterTextForm name="texts" value={texts} onChange={(e) => setTexts(e.target.value)} />
+                </Body>
+                <Manual visible={visibleR} ref={assignRHeight} height={height} />
+            </Wrapper>
 
-            <ImgWrapper>
-              <input
-                  type="file"
-                  name = "images"
-                  ref={selectFile}
-                  multiple
-                  aria-multiselectable
-                  accept="image/*"
-                  style={ {display: "none"} }
-                  onChange={handleImageUpload}/>
-              <Images showImages={showImages} />
-            </ImgWrapper>
-
-            <Button type="button" onClick={e => {e.preventDefault(); selectFile.current.click()}}>
-              파일 업로드
+            <Button type="submit" fontSize="18px">
+                <span>NEXT</span>
             </Button>
-          </ImageInputWrapper>
-
-          <AllInputWrapper>
-            <div>
-              <TextTitle>
-                <span>텍스트</span>
-              </TextTitle>
-                            
-              <p>제품에 대한 상세 설명을 해주세요.</p>
-              <InputWrapper type='textarea'
-                            name='productDetail'/>
-              
-              <p>제품에 대한 유의사항을 작성 해주세요.</p>
-              <InputWrapper type='textarea' 
-                            name='productNotice'/>
-              
-              <p>가격표를 작성해주세요.</p>
-              <InputWrapper type='textarea' 
-                            name='productPrice'/>
-              </div>
-            </AllInputWrapper>
-        </FormWrapper>
-
-        <div style={ {textAlign: "center"} }>
-          <Button type="submit" fontSize="18px" onClick={handleSubmitForm}>
-            <span>NEXT</span>
-          </Button>
-        </div>
-      </>
+        </form>
     );
-  }
+}
 
-
-const TextWrapper = styled.h3`
+const Wrapper = styled.div`
+  display: grid;
+  grid-template-columns: 15% 70% 15%;
   text-align: center;
 `
 
-const FormWrapper = styled.form`
-  display: flex;
-  justify-content: center;
-  text-align: center;
+const Body = styled.form`
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 5% 95%;
 `
 
-const AllInputWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  border-radius: 5px;
-  margin: 10px;
-  width: 500px;
-  height: 100%;
-`
-
-const InputWrapper = styled.input`
-  border-radius: 5px;
-  padding: 10px 10px;
-  width: 450px;
-  height: 150px;
-  margin-bottom: 30px;
-`
-
-const ImageInputWrapper = styled.div`
-  padding: 10px;
-  border-radius: 30px;
-  margin: 5px;
-  width: 480px;
-  height: 100%;
-`
-const ImgWrapper = styled.div`
-  padding: 15px;
-  margin-top: 15px;
-  border: 2px solid black;
-`
-
-
-export default PosterFormPage
+export default PosterFormPage;
