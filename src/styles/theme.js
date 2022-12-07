@@ -13,8 +13,12 @@ const color = {
     blue: '#3F53D8',
     lightBlue: '#F1F5FF',
     indigo: '#050038',
-    pink: '#F06B6D',
+    pink: '#F8959D', 
     lightPink: '#FBEAEB',
+    darkblue: '#4C5D87',
+    darkblueBtn: '#FCFDFF',
+    pinkBtn: '#FFFCFC'
+
 };
 
 const theme = {

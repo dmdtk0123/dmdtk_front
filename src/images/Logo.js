@@ -15,11 +15,11 @@ const Logo = ({ width, height }) => {
             >
             <image
                 id="image0"
-                width="424"
-                height="330"
+                width="500"
+                height="400"
                 x="0"
                 y="0"
-                href="https://user-images.githubusercontent.com/88575220/204129225-3aade454-2a7a-4415-b91e-d3bf76500571.png"
+                href="https://user-images.githubusercontent.com/88575220/206114032-af4294dc-2e71-43f5-a765-c4177e86e0db.png"
             />
         </svg>
   );

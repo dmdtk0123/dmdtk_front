@@ -5,10 +5,15 @@ import { Link } from 'react-router-dom'
 
 import Button from '../components/Button'
 import MainImg from "../images/MainPageImg2"
+import MainImg2 from "../images/MainPageImg3"  //프로젝트 소개 이미지
+import MainImg3 from "../images/MainPageImg4"  //프로젝트 이용방법 이미지
+
 
 const DivWrapper = styled.div`
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    
 `
 
 const BackgroundWrapper = styled.div`
@@ -17,7 +22,7 @@ const BackgroundWrapper = styled.div`
 `
 
 const TextWrapper = styled.div`
-    padding: 5px 10px;
+    padding: 0px 0px;
     text-align: center;
     position: absolute;
     top: 50%;
@@ -69,6 +74,12 @@ const MainPage = () => {
                     </Link>
                 </TextWrapper>
             </BackgroundWrapper>
+            <div>
+                <MainImg2 />
+                <MainImg3 />
+            </div>
+            
+        
         </DivWrapper>
     );
 }
