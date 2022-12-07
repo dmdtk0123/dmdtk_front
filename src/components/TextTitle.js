@@ -10,9 +10,10 @@ const StyledTitle = styled.span`
     font-weight: bold;
     border: 2px solid ${theme.color.blue};
     border-radius: 30px;
-    color: ${theme.color.blue};
-    background-color: ${theme.color.white};
+    color: ${theme.color.white};
     display: inline-flex;
+    background-color: #11ffee00;
+    border-color: ${props => props.color || theme.color.white};
 `
 
 const TextTitle = ({ children, visible, setVisible, ...props }) => {
