@@ -16,7 +16,7 @@ const PosterForm = () => {
   const handleImageUpload = (e) => {
     // 중복된 이미지가 들어올 경우 console창에 에러발생 뜸
     let fileArr = e.target.files;
-
+    console.log(fileArr[0].type);
     let fileURLs = [];
     // let filesLength = fileArr.length > 30 ? 30 : fileArr.length;    // 최대 30개
 
@@ -43,24 +43,21 @@ const PosterForm = () => {
       imageData.append("files", postImages[i]);
     }
 
-    // fetch("http://localhost:5000/upload", {
-    //   method: "POST",
-    //   body: imageData,
-    // })
-    //   .then((response) => {
-    //     console.log("response:", response);
-    //     if (response.redirected === true) {
-    //       window.location.href = response.url;
-    //     }
-    //   })
-    //   .then((data) => {
-    //     console.log("data:", data);
-    //   })
-    //   .catch((error) => {
-    //     console.log("error:", error);
-    //   });
+    fetch("http://localhost:5000/upload", {
+      method: "POST",
+      body: imageData,
+    })
+      .then((response) => {
+        // console.log("response:", response);
+        if (response.redirected === true) {
+          window.location.href = response.url;
+        }
+      })
+      .catch((error) => {
+        console.log("error:", error);
+      });
 
-    // e.preventDefault();
+    e.preventDefault();
 
     const textData = new FormData();
     textData.append(
@@ -76,9 +73,7 @@ const PosterForm = () => {
       document.getElementById("productPrice").value
     );
 
-    console.log(textData.get("productDetail"));
-
-    fetch("http://localhost:5000/upload", {
+    fetch("http://localhost:5001/kobert-result", {
       method: "POST",
       body: textData,
     })
@@ -95,7 +90,7 @@ const PosterForm = () => {
         console.log("error:", error);
       });
 
-    // navigate("/design");
+    navigate("/design");
   };
 
   return (

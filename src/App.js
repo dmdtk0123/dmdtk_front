@@ -22,7 +22,6 @@ function App() {
           <Route path='/poster' element={<PosterPage />} />
         </Routes>
 
-        <Footer />
       </BrowserRouter>
     </div>
   );
