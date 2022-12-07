@@ -23,7 +23,7 @@ const Header = () => {
             <Link to="/" style={{ textDecoration: 'none' }}>
                 <div>
                     <Logo width={40} height={30} />
-                    <span>ProjectName</span>
+                    <span>Maple</span>
                 </div>
             </Link>
             <div>

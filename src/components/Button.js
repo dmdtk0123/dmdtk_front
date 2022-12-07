@@ -7,20 +7,24 @@ const StyledButton = styled.button`
     padding: 6px 20px;
     font-size: ${props => props.fontSize || theme.fontSize.sm};
     font-weight: bold;
-    border-radius: 30px;
-    border: 1;
+    border-radius: 3px;
+    border: 3 ;
     margin: 5px 5px;
-    color: ${props => props.color || theme.color.blue};
-    background-color: ${theme.color.white};
-    border-color: ${props => props.color || theme.color.blue};
+    color: ${props => props.color || theme.color.white};
+    background-color: #11ffee00;
+    border-color: ${props => props.color || theme.color.white};
+    box-shadow: none;
+    border-style: solid;
 
     :hover {
-        background-color: ${props => props.color === theme.color.pink ? theme.color.lightPink : theme.color.lightBlue};
+        background-color: ${props => props.color || theme.color.white};
+        color: ${props => props.color === theme.color.pinkBtn ? theme.color.pink: theme.color.darkblue};
+        
     }
 
     :active {
-        background-color: ${props => props.color || theme.color.blue};
-        color: ${theme.color.white};
+        background-color: ${props => props.color || theme.color.white};
+        color: ${props => props.color || theme.color.darkblue};
     }
 `
 
