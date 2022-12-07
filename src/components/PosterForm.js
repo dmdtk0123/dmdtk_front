@@ -102,6 +102,9 @@ const PosterForm = () => {
     <AllWrapper>
       <FormWrapper id="posterForm" onSubmit={handleSubmitForm}>
         <ImageInputWrapper>
+          <div>
+            <TextWhite>포스터에 들어갈 사진을 업로드 하세요</TextWhite>
+          </div>
           <ImgWrapper>
             <input
               type="file"
@@ -129,13 +132,13 @@ const PosterForm = () => {
 
         <AllTextInputWrapper>
           <div>
-            <p>제품에 대한 상세 설명을 해주세요.</p>
+            <TextWhite>제품에 대한 상세 설명을 해주세요.</TextWhite>
             <TextareaInputWrapper type="textarea" id="productDetail" />
 
-            <p>제품에 대한 유의사항을 작성 해주세요.</p>
+            <TextWhite>제품에 대한 유의사항을 작성 해주세요.</TextWhite>
             <TextareaInputWrapper type="textarea" id="productNotice" />
 
-            <p>가격표를 작성해주세요.</p>
+            <TextWhite>가격표를 작성해주세요.</TextWhite>
             <TextareaInputWrapper type="textarea" id="productPrice" />
           </div>
         </AllTextInputWrapper>
@@ -150,6 +153,10 @@ const PosterForm = () => {
   );
 };
 
+const TextWhite = styled.p`
+  color: white;
+`
+
 const AllWrapper = styled.div`
   justify-content: center;
   text-align: center;
@@ -161,16 +168,21 @@ const FormWrapper = styled.form`
 `;
 
 const ImageInputWrapper = styled.div`
-  padding: 10px;
-  border-radius: 30px;
+  padding: 5px;
+  border-radius: 50px;
   margin: 5px;
   width: 480px;
   height: 100%;
 `;
 const ImgWrapper = styled.div`
   padding: 15px;
+  padding-top: 60px;
+  padding-bottom: 60px;
   margin-top: 15px;
-  border: 2px solid black;
+  border: 2px solid white;
+  border-radius: 5px;
+  background-color: white;
+  
 `;
 
 const AllTextInputWrapper = styled.div`
@@ -179,6 +191,7 @@ const AllTextInputWrapper = styled.div`
   margin: 10px;
   width: 500px;
   height: 100%;
+
 `;
 
 const TextareaInputWrapper = styled.input`
@@ -187,6 +200,8 @@ const TextareaInputWrapper = styled.input`
   width: 450px;
   height: 150px;
   margin-bottom: 30px;
+  border-color: white;
+  border-style: none;
 `;
 
 export default PosterForm;

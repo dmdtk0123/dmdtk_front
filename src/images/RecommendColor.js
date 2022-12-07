@@ -8,19 +8,19 @@ const MainPageImg2 = (props) => {
             x="0px"
             y="0px"
             width="100%"
-            height="1852"
-            viewBox="0 0 1440 1852"
+            height="100px"
+            viewBox="0 0 400 100"
             enableBackground="new 0 0 {width} {height}"
             xmlSpace="preserve"
             role='img'
             >
             <image
                 id="uploadimage"
-                width="1440"
-                height="1852"
+                width="400"
+                height="100"
                 x="0"
                 y="0"
-                href="https://user-images.githubusercontent.com/88575220/206118721-2c5e724c-8389-4e1b-8ccb-567c3bdcb260.png"
+                href="https://user-images.githubusercontent.com/88575220/206171242-e016a819-715d-496c-8f33-d0001ee787d5.png"
             />
         </svg>
   );
