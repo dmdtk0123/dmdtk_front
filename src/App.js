@@ -21,8 +21,6 @@ function App() {
           <Route path='/design' element={<DesignPage />} />
           <Route path='/poster' element={<PosterPage />} />
         </Routes>
-
-        
       </BrowserRouter>
     </div>
   );
