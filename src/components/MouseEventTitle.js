@@ -4,6 +4,10 @@ import ManualModal from './ManualModal'
 
 import theme from '../styles/theme'
 
+import ImageModal from '../Manual/ImageModal';
+import TextModal from '../Manual/TextModal';
+import DesignModal from '../Manual/DesignModal';
+
 const MouseEventTitle = ({ visible, setVisible, ...props }) => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -27,7 +31,9 @@ const MouseEventTitle = ({ visible, setVisible, ...props }) => {
                     ?
             </StyledButton>
             <ManualModal visible={isOpen} onClose={handleModalClose} onMini={handleModalMini}>
-                <div>모달에 들어갈 콘텐츠입니다.</div>
+                <div>
+                    <DesignModal />
+                </div>
             </ManualModal>
         </div>
     );

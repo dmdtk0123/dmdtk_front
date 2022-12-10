@@ -69,17 +69,18 @@ const Background = styled.div<{ visible: boolean }>`
   bottom: 0;
   left: 0;
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.8);
   ${(props) => modalSettings(props.visible)}
 `;
 
 const ModalSection = styled.div<{ visible: boolean }>`
-  width: 400px;
+  width: 1100px;
+  height: 1000px;
   position: absolute;
-  top: 50%;
+  top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgba(0, 0, 0, 0.5);
   padding: 16px;
   ${(props) => modalSettings(props.visible)}
 `;
@@ -91,12 +92,13 @@ const Title = styled.div`
 `;
 
 const Content = styled.div`
-  padding: 16px 0;
+  padding: 50px 16px;
 `;
 
 const CloseButton = styled.button`
   border: none;
   background: none;
   cursor: pointer;
+  color: white;
 `;
 export default ManualModal;
