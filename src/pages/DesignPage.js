@@ -82,7 +82,7 @@ const DesignPage = () => {
             </BorderWrapper>
 
             <div style={{ textAlign: 'center' }}>
-              <Link to="/loading">
+              <Link to="/poster">
                 <Button type="submit" fontSize="18px" color={theme.color.pinkBtn}>
                   <span>완료</span>
                 </Button>

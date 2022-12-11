@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 import Manual from "../layout/Manual";
 import TextTitle from "../components/TextTitle";
-import Button from "../components/Button";
 import PosterForm from "../components/PosterForm";
 import UploadImg from "../images/UploadPageImg"
 

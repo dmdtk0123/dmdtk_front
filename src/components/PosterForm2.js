@@ -1,15 +1,20 @@
-import React, { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
+import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
-import Button from '../components/Button';
-import Images from '../components/Images';
+// import UseLocalStorage from "../hook/useLocalStorage";
+import UseFetch from "../function/useFetch";
 
-const PosterForm = () => {
+import LoadingPage from "./Loading";
+
+import Button from "../components/Button";
+import Images from "../components/Images";
+
+const PosterForm2 = () => {
   const navigate = useNavigate();
 
   /* 이미지 처리*/
-  const selectFile = useRef('');
+  const selectFile = useRef("");
   const [postImages, setPostImages] = useState([]); // 서버로 보낼 이미지 데이터
   const [showImages, setshowImages] = useState([]); // 프리뷰 보여줄 이미지 데이터
 
@@ -37,69 +42,64 @@ const PosterForm = () => {
   const handleSubmitForm = (e) => {
     e.preventDefault();
 
-    /* 사진 데이터 보내기 */
+    /* 사진 데이터 FormData에 저장 */
     const imageData = new FormData();
     for (let i = 0; i < postImages.length; i++) {
-      imageData.append('files[]', postImages[i]);
+      imageData.append("files", postImages[i]);
     }
 
-    e.preventDefault();
-
+    /* 텍스트 데이터 flask에 전송 */
     const textData = new FormData();
-    textData.append('productDetail', document.getElementById('productDetail').value);
-    textData.append('productNotice', document.getElementById('productNotice').value);
-    textData.append('productPrice', document.getElementById('productPrice').value);
+    textData.append(
+      "productDetail",
+      document.getElementById("productDetail").value
+    );
+    textData.append(
+      "productNotice",
+      document.getElementById("productNotice").value
+    );
+    textData.append(
+      "productPrice",
+      document.getElementById("productPrice").value
+    );
 
-    fetch('http://localhost:80/kobert-result', {
-      method: 'POST',
+    const {
+      loading,
+      error,
+      kData = [],
+    } = UseFetch("http://localhost:80/kobert-result", {
+      method: "POST",
       body: textData,
-    })
-      .then((response) => {
-        console.log('response:', response);
-        if (response.redirected === true) {
-          window.location.href = response.url;
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log('data:', data);
+    });
 
-        console.log(data['text_notice']);
-        console.log(data['text_price']);
-        const str = `{"text_notice": "${data['text_notice']}","text_price": "${data['text_price']}"}`;
+    if (error) return <p>Error!</p>;
 
-        delete data['text_notice'];
-        delete data['text_price'];
-        localStorage.setItem('text_data', str);
+    if (loading) return <LoadingPage />;
+    else {
+      imageData.append("data", JSON.stringify(kData));
 
-
-        imageData.append('data', JSON.stringify(data));
-
-        fetch('http://localhost:5000/upload', {
-          method: 'POST',
-          body: imageData,
-        })
-          .then((response) => {
-            // console.log("response:", response);
-            if (response.redirected === true) {
-              window.location.href = response.url;
-            }
-            return response.json();
-          })
-          .then((data) => {
-            localStorage.setItem('final_result', JSON.stringify(data));
-            console.log('final_result:', data);
-            console.log('typeof final_result:', typeof data);
-          })
-          .catch((error) => {
-            console.log('error:', error);
-          });
-      })
-      .catch((error) => {
-        console.log('error:', error);
+      const {
+        loading,
+        error,
+        rData = [],
+      } = UseFetch("http://localhost:5000/upload", {
+        method: "POST",
+        body: imageData,
       });
+    }
 
-    navigate('/design');
+    if (error) return <p>Error!</p>;
+
+    if (loading) return <LoadingPage />;
+    else {
+      imageData.append("data", JSON.stringify(kData));
+
+      // const [result, setResult] = UseLocalStorage("result", result);
+
+      navigate("/design");
+    }
+
+    console.log(imageData);
   };
 
   return (
@@ -117,7 +117,7 @@ const PosterForm = () => {
               multiple
               aria-multiselectable
               accept="image/*"
-              style={{ display: 'none' }}
+              style={{ display: "none" }}
               onChange={handleImageUpload}
             />
             <Images showImages={showImages} />
@@ -148,7 +148,7 @@ const PosterForm = () => {
         </AllTextInputWrapper>
       </FormWrapper>
 
-      <div style={{ textAlign: 'center' }}>
+      <div style={{ textAlign: "center" }}>
         <Button type="submit" fontSize="18px" onClick={handleSubmitForm}>
           <span>NEXT</span>
         </Button>
@@ -206,4 +206,4 @@ const TextareaInputWrapper = styled.input`
   border-style: none;
 `;
 
-export default PosterForm;
+export default PosterForm2;

@@ -19,7 +19,6 @@ function App() {
           <Route path="/posterForm" element={<PosterFormPage />} />
           <Route path="/design" element={<DesignPage />} />
           <Route path="/poster" element={<PosterPage />} />
-          <Route path="/loading" element={<LoadingPage />} />
         </Routes>
       </BrowserRouter>
     </div>

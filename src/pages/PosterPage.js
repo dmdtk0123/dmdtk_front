@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Canvas from "../posterLayout/Canvas";
 
@@ -6,6 +6,7 @@ import theme from "../styles/theme";
 import PosterPageImg from "../images/PosterPageImg"; //배경 이미지
 import RecommendColorImg from "../images/RecommendColor"; //추천 컬러 이미지
 import RecommendWriteImg from "../images/RecommendWrite"; //추천 컬러 이미지
+import LoadingPage from "../components/Loading";
 
 const OngroundWrapper = styled.div`
   width: 100%;
@@ -66,7 +67,29 @@ const Body = styled.form`
 `;
 
 const PosterPage = () => {
-  return (
+  // 준비 상태 확인(서버 결과가 들어왔는지 확인 => 서버 동작이 모두 끝났는지 확인)
+  const [isReady, setIsReady] = useState(false);
+  const [resultData, setResultData] = useState('');
+
+  const getData = async () => {
+    setIsReady(false);
+    try {
+      const data = await localStorage.getItem('final_result');
+      if (data != null) {
+        setResultData(data);
+        setIsReady(true);
+      }
+    } catch (error) {
+      window.alert(error);
+    }
+  }
+
+  useEffect(() => {
+    getData();
+  }, [resultData]);
+
+  return isReady ? (
+    // 앱 화면
     <>
       <BackgroundWrapper>
         <OngroundWrapper>
@@ -94,6 +117,9 @@ const PosterPage = () => {
         <PosterPageImg />
       </BackgroundWrapper>
     </>
+  ) : (
+    // 로딩중 화면
+    <LoadingPage />
   );
 };
 

@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import PosterPageImg from "../images/PosterPageImg"; //배경 이미지
 
-const LoadingPage = () => {
+const Loading = () => {
   return (
     <>
       <BackgroundWrapper>
@@ -51,4 +51,4 @@ const Body = styled.form`
   display: grid;
 `;
 
-export default LoadingPage;
+export default Loading;
