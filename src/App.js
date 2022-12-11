@@ -5,7 +5,6 @@ import MainPage from './pages/MainPage';
 import DesignPage from './pages/DesignPage';
 import PosterPage from './pages/PosterPage';
 import PosterFormPage from './pages/PosterFormPage';
-import LoadingPage from './pages/LoadingPage';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
