@@ -7,3 +7,12 @@
     font-family: "cafe24S";
     src: url("./Cafe24Simplehae.ttf");
 }
+
+@font-face {
+    font-family: "SCDream5";
+    src: url("./SCDream5.woff") format('woff');
+}
+@font-face {
+    font-family: "SCDream8";
+    src: url("./SCDream8.woff") format('woff');
+}

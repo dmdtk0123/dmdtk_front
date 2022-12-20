@@ -32,7 +32,7 @@ const MouseEventTitle = ({ visible, setVisible, ...props }) => {
             </StyledButton>
             <ManualModal visible={isOpen} onClose={handleModalClose} onMini={handleModalMini}>
                 <div>
-                    <DesignModal />
+                    <TextModal />
                 </div>
             </ManualModal>
         </div>

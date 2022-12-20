@@ -38,8 +38,7 @@ const GridWrapper = styled.div`
 `
 const ContentWrapper = styled.div`
     text-align: center;
-    border: 2px solid #aaa;
-
+    
 `
 
 const MainPage = () => {

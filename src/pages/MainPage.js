@@ -27,6 +27,7 @@ const TextWrapper = styled.div`
     position: absolute;
     top: 50%;
     left: 50%;
+    font-family: 'SCDream8', sans-serif;
     transform: translate( -50%, -50% );
     color: white;
 `
