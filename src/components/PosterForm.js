@@ -62,10 +62,7 @@ const PosterForm = () => {
         return response.json();
       })
       .then((data) => {
-        console.log('data:', data);
 
-        console.log(data['text_notice']);
-        console.log(data['text_price']);
         const str = `{"text_notice": "${data['text_notice']}","text_price": "${data['text_price']}"}`;
 
         delete data['text_notice'];

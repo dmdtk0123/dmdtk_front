@@ -35,13 +35,13 @@ const PosterFormPage = () => {
             <Manual visible={visibleL} ref={assignLHeight} height={height} />
             <Body>
               <div >
-                <TextTitle visible={visibleL} setVisible={setVisibleL}>
-                  <span>사진</span>
+                <TextTitle modal="image" visible={visibleL} setVisible={setVisibleL}>
+                  <span style={{marginTop: "3.5px"}}>사진</span>
                 </TextTitle>
               </div>
               <div>
-                <TextTitle visible={visibleR} setVisible={setVisibleR}>
-                  <span>텍스트</span>
+                <TextTitle modal="text" visible={visibleR} setVisible={setVisibleR}>
+                  <span style={{marginTop: "3.5px"}}>텍스트</span>
                 </TextTitle>
               </div>
               <div
