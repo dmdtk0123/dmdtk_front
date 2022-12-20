@@ -12,15 +12,18 @@ const Canvas = () => {
   const finalResult = JSON.parse(localStorage.getItem('final_result'));
   const textData = JSON.parse(localStorage.getItem('text_data'));
 
+  const resultImg = finalResult['image'];
+  const resultText = finalResult['text'];
+
   return (
     <Stage width={500} height={1360}>
       <Layer>
-        <CanvasTopLayout b64Image={finalResult[2].image} />
+        <CanvasTopLayout b64Image={resultImg.farm_landscape} />
         <CanvasBackground />
-        <CanvasLeftLayout y={310} b64Image={finalResult[1].image} text={finalResult[1].text} />
-        <CanvasRightLayout y={410} b64Image={finalResult[3].image} text={finalResult[3].text} />
-        <CanvasLeftLayout y={510} b64Image={finalResult[4].image} text={finalResult[4].text} />
-        <CanvasPriceLayout b64Image={finalResult[5].image} text={textData['text_price']} />
+        <CanvasLeftLayout y={310} b64Image={resultImg.close_shot} text={resultText.taste} />
+        <CanvasRightLayout y={410} b64Image={resultImg.box} text={resultText.culture} />
+        <CanvasLeftLayout y={510} b64Image={resultImg.sweetness} text={resultText.sweetness} />
+        <CanvasPriceLayout b64Image={resultImg.size_comparison} text={textData['text_price']} />
         <CanvasWorningLayout text={textData['text_notice']} />
       </Layer>
     </Stage>

@@ -53,8 +53,8 @@ const PosterForm = () => {
     textData.append('productPrice', document.getElementById('productPrice').value);
 
     // 테스트용 지울것
-    localStorage.setItem("text_data", `{"text_notice": "공지사항","text_price": "가격"}`)
-    localStorage.setItem("final_result",  JSON.stringify(jsonResult));
+    // localStorage.setItem("text_data", `{"text_notice": "공지사항","text_price": "가격"}`)
+    // localStorage.setItem("final_result",  JSON.stringify(jsonResult));
     
     fetch('http://localhost:80/kobert-result', {
       method: 'POST',
