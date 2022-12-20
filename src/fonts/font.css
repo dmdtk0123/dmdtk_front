@@ -1,18 +1,32 @@
-@font-face {
-    font-family: "BMJA";
-    src: url("./BMJUA_ttf.tff");
-}
 
 @font-face {
-    font-family: "cafe24S";
-    src: url("./Cafe24Simplehae.ttf");
+    font-family: "Cafe24Simplehae";
+    src: url("Cafe24Simplehae.ttf");
 }
-
+@font-face {
+    font-family: "SCDream4";
+    src: url("SCDream4.otf");
+}
 @font-face {
     font-family: "SCDream5";
-    src: url("./SCDream5.woff") format('woff');
+    src: url("SCDream5.woff");
 }
 @font-face {
     font-family: "SCDream8";
-    src: url("./SCDream8.woff") format('woff');
+    src: url("SCDream8.woff");
 }
+
+
+.Cafe24Simplehae{
+		font-family: "Cafe24Simplehae" ;
+}
+.SCDream4{
+    font-family: "SCDream4" ;
+}
+.SCDream5{
+    font-family: "SCDream5" ;
+}
+.SCDream8{
+    font-family: "SCDream8" ;
+}
+

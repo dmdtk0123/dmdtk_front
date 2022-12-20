@@ -68,6 +68,7 @@ const TextWrapper = styled.h3`
   text-align: center;
   font-size: 30px;
   color: white;
+  font-family: SCDream4;
 `
 
 const BackgroundWrapper = styled.div`

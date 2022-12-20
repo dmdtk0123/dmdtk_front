@@ -3,10 +3,13 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
+
+
 import Button from '../components/Button'
 import MainImg from "../images/MainPageImg2"
 import MainImg2 from "../images/MainPageImg3"  //프로젝트 소개 이미지
 import MainImg3 from "../images/MainPageImg4"  //프로젝트 이용방법 이미지
+
 
 
 const DivWrapper = styled.div`
@@ -27,10 +30,16 @@ const TextWrapper = styled.div`
     position: absolute;
     top: 50%;
     left: 50%;
-    font-family: 'SCDream8', sans-serif;
+    fontfamily: 'SCDream8', sans-serif;
     transform: translate( -50%, -50% );
     color: white;
+    font-family: "SCDream8";
 `
+const SimpleTextWrapper = styled.div`
+fontfamily: 'Cafe24Simplehae', sans-serif;
+`
+
+
 
 const MainPage = () => {
 
@@ -50,6 +59,7 @@ const MainPage = () => {
     //     )
     // }, []) 
 
+
     return (
         <DivWrapper>
             <BackgroundWrapper>
@@ -58,10 +68,13 @@ const MainPage = () => {
                 </div>
 
                 <TextWrapper>
-                    <h1 >Make A Poster Like an Expert</h1>
-                    <p>포스터 제작하기 힘들지 않으셨나요?</p>
-                    <p>Mappel에서 나만의 포스터를 만들어 보세요!</p>
-                    <p>남들과 차별화된  AI가 쉽고 빠르게 만들어 줍니다.</p>
+                    <h1 class="SCDream8">Make A Poster Like an Expert</h1>
+                    <p class="SCDream4">포스터 제작하기 힘들지 않으셨나요?</p>
+                    <p class="SCDream4">Mappel에서 나만의 포스터를 만들어 보세요!</p>
+                    <p class="SCDream4">남들과 차별화된  AI가 쉽고 빠르게 만들어 줍니다.</p>
+
+
+
                     {/* { (typeof data.members === 'undefined') ? (
                         <p>loading...</p>
                     ) : (
@@ -69,7 +82,7 @@ const MainPage = () => {
                     )} */}
 
                     <Link to='/posterForm'>
-                        <Button type="button" fontSize="18px">
+                        <Button type="button" fontSize="18px" id="SCDream4">
                             <span>시작하기</span>
                         </Button>
                     </Link>
@@ -79,8 +92,8 @@ const MainPage = () => {
                 <MainImg2 />
                 <MainImg3 />
             </div>
-            
-        
+
+
         </DivWrapper>
     );
 }

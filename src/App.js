@@ -8,6 +8,8 @@ import PosterFormPage from './pages/PosterFormPage';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
+import './fonts/font.css'
+
 function App() {
   return (
     <div className="App">
