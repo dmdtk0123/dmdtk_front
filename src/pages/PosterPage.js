@@ -23,6 +23,7 @@ const TextWrapper = styled.h3`
   text-align: center;
   font-size: 30px;
   color: white;
+  font-family: SCDream4;
 `;
 
 const Wrapper = styled.div`
@@ -43,6 +44,7 @@ const ImageInputWrapper = styled.div`
   background-color: #11ffee00;
   border-color: ${theme.color.white};
   margin-top: 50px;
+  font-family: SCDream4;
 `;
 
 const SImageInputWrapper = styled.div`
@@ -57,6 +59,7 @@ const SImageInputWrapper = styled.div`
   background-color: #11ffee00;
   border-color: ${theme.color.white};
   margin-top: 30px;
+  font-family: SCDream4;
 `;
 
 const Body = styled.form`
@@ -102,9 +105,9 @@ const PosterPage = () => {
                 <Canvas />
               </div>
               <div style={{padding: "150px"}}>
-                <SImageInputWrapper>디자인</SImageInputWrapper>
-                <h3>귀여운</h3>
-                <h3>경쾌한</h3>
+                <SImageInputWrapper >디자인</SImageInputWrapper>
+                <h3 class="SCDream4" style={{color:"white"}}>귀여운</h3>
+                <h3 class="SCDream4" style={{color:"white"}}>경쾌한</h3>
                 <ImageInputWrapper>추천 색상</ImageInputWrapper>
                 <RecommendColorImg />
                 <ImageInputWrapper>추천 글꼴</ImageInputWrapper>
