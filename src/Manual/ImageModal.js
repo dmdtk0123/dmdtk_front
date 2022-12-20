@@ -12,7 +12,7 @@ const ImageModal = () => {
 
     return (
         <>
-            <h1 >사진이미지 예시</h1>
+            <h1>사진이미지 예시</h1>
             <p>아래에 있는 사진의 종류를 참고하여 다양한 사진을 올려주세요</p>
             <NumberTextWrapper>1. 제품근접 사진</NumberTextWrapper>
             <ImageModalImg1/>
