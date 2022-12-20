@@ -6,7 +6,6 @@ import theme from '../styles/theme'
 const StyledButton = styled.button`
     padding: ${props => props.radius ? "2px 5px" : "6px 20px"};
     font-size: ${props => props.fontSize || theme.fontSize.sm};
-    font-weight: bold;
     border-radius: ${props => props.radius || "3px"};
     border: 3 ;
     margin: 5px 5px;
@@ -16,6 +15,8 @@ const StyledButton = styled.button`
     border-color: ${props => props.color || theme.color.white};
     box-shadow: none;
     border-style: solid;
+    font-family: SCDream4;
+   
 
     :hover {
         background-color: ${props => props.color || theme.color.white};

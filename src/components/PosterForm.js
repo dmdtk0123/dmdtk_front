@@ -156,6 +156,7 @@ const PosterForm = () => {
 
 const TextWhite = styled.p`
   color: white;
+  font-family:"SCDream4";
 `;
 
 const AllWrapper = styled.div`

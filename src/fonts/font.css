@@ -1,11 +1,10 @@
-
 @font-face {
-    font-family: "Cafe24Simplehae";
-    src: url("Cafe24Simplehae.ttf");
+    font-family: "SCDream3";
+    src: url("SCDream3.woff");
 }
 @font-face {
     font-family: "SCDream4";
-    src: url("SCDream4.otf");
+    src: url("SCDream4.woff");
 }
 @font-face {
     font-family: "SCDream5";
@@ -15,10 +14,46 @@
     font-family: "SCDream8";
     src: url("SCDream8.woff");
 }
+@font-face {
+    font-family: "Cafe24Simplehae";
+    src: url("Cafe24Simplehae.ttf");
+}
+@font-face {
+    font-family: "Cafe24PrettyNight";
+    src: url("Cafe24PrettyNight.woff");
+}
+@font-face {
+    font-family: "GmarketSansM";
+    src: url("GmarketSansM.woff");
+}
+@font-face {
+    font-family: "Jalnan";
+    src: url("Jalnan.woff");
+}
+@font-face {
+    font-family: "JUA";
+    src: url("JUA.woff");
+}
+@font-face {
+    font-family: "NanumMyeongjoEB";
+    src: url("NanumMyeongjoEB.woff");
+}
+@font-face {
+    font-family: "NanumMyeongjoR";
+    src: url("NanumMyeongjoR.woff");
+}
+@font-face {
+    font-family: "GmarketSansM";
+    src: url("GmarketSansM.woff");
+}
+@font-face {
+    font-family: "GmarketSansM";
+    src: url("GmarketSansM.woff");
+}
 
 
-.Cafe24Simplehae{
-		font-family: "Cafe24Simplehae" ;
+.SCDream3{
+    font-family: "SCDream3" ;
 }
 .SCDream4{
     font-family: "SCDream4" ;
@@ -29,4 +64,27 @@
 .SCDream8{
     font-family: "SCDream8" ;
 }
+.Simplehae{
+    font-family: "Cafe24Simplehae" ;
+}
+.PrettyNight{
+    font-family: "Cafe24PrettyNight" ;
+}
+.Gmarket{
+    font-family: "GmarketSansM" ;
+}
+.Jalnan{
+    font-family: "Jalnan" ;
+}
+.JUA{
+    font-family: "JUA" ;
+}
+.NanumEB{
+    font-family: "NanumMyeongjoEB" ;
+}
+.NanumR{
+    font-family: "NanumMyeongjoR" ;
+}
+
+
 

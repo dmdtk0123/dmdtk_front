@@ -79,12 +79,14 @@ const OngroundWrapper = styled.div`
 
 const TextWhite = styled.p`
   color: white;
+  font-family: SCDream4;
 `;
 
 const TextWrapper = styled.h3`
   text-align: center;
   font-size: 30px;
   color: white;
+  font-family: SCDream4;
 `;
 
 

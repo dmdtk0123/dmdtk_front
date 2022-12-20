@@ -30,7 +30,7 @@ const PosterFormPage = () => {
     <>
       <BackgroundWrapper> 
         <OngroundWrapper>
-          <TextWrapper>포스터에 들어갈 사진과 텍스트를 넣어주세요.</TextWrapper>
+          <TextWrapper>포스터에 들어갈 사진과 텍스트를 넣어주세요</TextWrapper>
           <Wrapper>
             <Manual visible={visibleL} ref={assignLHeight} height={height} />
             <Body>
@@ -64,10 +64,11 @@ const PosterFormPage = () => {
   );
 };
 
-const TextWrapper = styled.h3`
+const TextWrapper = styled.div`
   text-align: center;
   font-size: 30px;
   color: white;
+  margin-bottom:1em;
   font-family: SCDream4;
 `
 

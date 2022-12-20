@@ -69,9 +69,9 @@ const MainPage = () => {
 
                 <TextWrapper>
                     <h1 class="SCDream8">Make A Poster Like an Expert</h1>
-                    <p class="SCDream4">포스터 제작하기 힘들지 않으셨나요?</p>
-                    <p class="SCDream4">Mappel에서 나만의 포스터를 만들어 보세요!</p>
-                    <p class="SCDream4">남들과 차별화된  AI가 쉽고 빠르게 만들어 줍니다.</p>
+                    <p class="SCDream3">포스터 제작하기 힘들지 않으셨나요?</p>
+                    <p class="SCDream3">Mappel에서 나만의 포스터를 만들어 보세요!</p>
+                    <p class="SCDream3">남들과 차별화된  AI가 쉽고 빠르게 만들어 줍니다.</p>
 
 
 
@@ -82,7 +82,7 @@ const MainPage = () => {
                     )} */}
 
                     <Link to='/posterForm'>
-                        <Button type="button" fontSize="18px" id="SCDream4">
+                        <Button type="button" fontSize="18px" class="SCDream8">
                             <span>시작하기</span>
                         </Button>
                     </Link>
