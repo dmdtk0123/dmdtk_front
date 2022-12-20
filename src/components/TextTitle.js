@@ -5,7 +5,7 @@ import theme from '../styles/theme'
 import MouseEventTitle from './MouseEventTitle';
 
 const StyledTitle = styled.span`
-    padding: 8px 14px 8px 20px;
+    padding: 4px 14px 4px 20px;
     font-size: 18px;
     font-weight: bold;
     border: 2px solid ${theme.color.blue};
@@ -16,11 +16,11 @@ const StyledTitle = styled.span`
     border-color: ${props => props.color || theme.color.white};
 `
 
-const TextTitle = ({ children, visible, setVisible, ...props }) => {
+const TextTitle = ({ children, modal, visible, setVisible, ...props }) => {
     return (
         <StyledTitle>
             {children}
-            <MouseEventTitle visible={visible} setVisible={setVisible}></MouseEventTitle>
+            <MouseEventTitle modal={modal} visible={visible} setVisible={setVisible}></MouseEventTitle>
         </StyledTitle>
     )
 };
