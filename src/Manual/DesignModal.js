@@ -34,11 +34,10 @@ const DesignModal = () => {
     );
 }
 
-
 const NumberTextWrapper = styled.h2`
     display: block;
     font-size: 1.17em;
-    margin: 0em;
+    margin: 0;
     font-weight: bold;
 `
 const GridWrapper = styled.div`

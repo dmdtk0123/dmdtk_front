@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
 
-import theme from '../styles/theme'
 import Button from './Button'
 
 import ManualModal from '../Manual/ManualModal'
@@ -34,7 +32,7 @@ const MouseEventTitle = ({ modal, visible, setVisible, ...props }) => {
             <ManualModal visible={isOpen} onClose={handleModalClose} onMini={handleModalMini}>
                 {
                    {
-                        test: <TextModal />,
+                        text: <TextModal />,
                         image: <ImageModal />,
                         design: <DesignModal />,
                    }[modal]
