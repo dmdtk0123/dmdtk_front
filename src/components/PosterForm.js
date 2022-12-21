@@ -84,8 +84,11 @@ const PosterForm = () => {
         })
           .then((response) => {
             // console.log("response:", response);
-            if (response.redirected === true) {
-              window.location.href = response.url;
+            // if (response.redirected === true) {
+            //   window.location.href = response.url;
+            // }
+            if (response.ok === true) {
+              navigate('/poster', { isReady: true });
             }
             return response.json();
           })
