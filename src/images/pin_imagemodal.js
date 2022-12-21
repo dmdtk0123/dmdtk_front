@@ -9,15 +9,15 @@ const MainPageImg2 = (props) => {
             y="0px"
             width="100%"
             height="100%"
-            viewBox="0 0 1440 1852"
+            viewBox="0 0 220 900"
             enableBackground="new 0 0 {width} {height}"
             xmlSpace="preserve"
             role='img'
             >
             <image
                 id="uploadimage"
-                width="1440"
-                height="1852"
+                width="220"
+                height="900"
                 x="0"
                 y="0"
                 href="https://user-images.githubusercontent.com/88575220/208803531-c036aa29-5f61-4b00-98d4-20ce92663f7a.png"
