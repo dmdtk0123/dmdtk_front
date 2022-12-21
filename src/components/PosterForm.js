@@ -201,7 +201,7 @@ const AllTextInputWrapper = styled.div`
   height: 100%;
 `;
 
-const TextareaInputWrapper = styled.input`
+const TextareaInputWrapper = styled.textarea`
   border-radius: 5px;
   padding: 10px 10px;
   width: 450px;
@@ -209,6 +209,8 @@ const TextareaInputWrapper = styled.input`
   margin-bottom: 30px;
   border-color: white;
   border-style: none;
+  white-space: pre-warp;
+  word-break:break-all;
 `;
 
 export default PosterForm;
