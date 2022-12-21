@@ -3,8 +3,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-
-
 import Button from '../components/Button'
 import MainImg from "../images/MainPageImg2"
 import MainImg2 from "../images/MainPageImg3"  //프로젝트 소개 이미지

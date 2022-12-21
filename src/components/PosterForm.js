@@ -1,17 +1,17 @@
-import React, { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
+import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
-import Button from '../components/Button';
-import Images from '../components/Images';
+import Button from "../components/Button";
+import Images from "../components/Images";
 
-import jsonResult from '../json_matching-result.json';
+import jsonResult from "../json_matching-result.json";
 
 const PosterForm = () => {
   const navigate = useNavigate();
 
   /* 이미지 처리*/
-  const selectFile = useRef('');
+  const selectFile = useRef("");
   const [postImages, setPostImages] = useState([]); // 서버로 보낼 이미지 데이터
   const [showImages, setshowImages] = useState([]); // 프리뷰 보여줄 이미지 데이터
 
@@ -42,44 +42,51 @@ const PosterForm = () => {
     /* 사진 데이터 보내기 */
     const imageData = new FormData();
     for (let i = 0; i < postImages.length; i++) {
-      imageData.append('files[]', postImages[i]);
+      imageData.append("files[]", postImages[i]);
     }
 
     e.preventDefault();
 
     const textData = new FormData();
-    textData.append('productDetail', document.getElementById('productDetail').value);
-    textData.append('productNotice', document.getElementById('productNotice').value);
-    textData.append('productPrice', document.getElementById('productPrice').value);
+    textData.append(
+      "productDetail",
+      document.getElementById("productDetail").value
+    );
+    textData.append(
+      "productNotice",
+      document.getElementById("productNotice").value
+    );
+    textData.append(
+      "productPrice",
+      document.getElementById("productPrice").value
+    );
 
     // 테스트용 지울것
     // localStorage.setItem("text_data", `{"text_notice": "공지사항","text_price": "가격"}`)
     // localStorage.setItem("final_result",  JSON.stringify(jsonResult));
-    
-    fetch('http://localhost:80/kobert-result', {
-      method: 'POST',
+
+    fetch("http://localhost:80/kobert-result", {
+      method: "POST",
       body: textData,
     })
       .then((response) => {
-        console.log('response:', response);
+        console.log("response:", response);
         if (response.redirected === true) {
           window.location.href = response.url;
         }
         return response.json();
       })
       .then((data) => {
+        const str = `{"text_notice": "${data["text_notice"]}","text_price": "${data["text_price"]}"}`;
 
-        const str = `{"text_notice": "${data['text_notice']}","text_price": "${data['text_price']}"}`;
+        delete data["text_notice"];
+        delete data["text_price"];
+        localStorage.setItem("text_data", str);
 
-        delete data['text_notice'];
-        delete data['text_price'];
-        localStorage.setItem('text_data', str);
+        imageData.append("data", JSON.stringify(data));
 
-
-        imageData.append('data', JSON.stringify(data));
-
-        fetch('http://localhost:5000/upload', {
-          method: 'POST',
+        fetch("http://localhost:5000/upload", {
+          method: "POST",
           body: imageData,
         })
           .then((response) => {
@@ -87,23 +94,25 @@ const PosterForm = () => {
             if (response.redirected === true) {
               window.location.href = response.url;
             }
-            
             return response.json();
           })
           .then((data) => {
-            localStorage.setItem('final_result', JSON.stringify(data));
-            console.log('final_result:', data);
-            console.log('typeof final_result:', typeof data);
+            localStorage.setItem("final_result", JSON.stringify(data));
+            console.log("final_result:", data);
+            console.log("typeof final_result:", typeof data);
           })
           .catch((error) => {
-            console.log('error:', error);
+            console.log("error:", error);
+          })
+          .finally(() => {
+            navigate("/poster");
           });
       })
       .catch((error) => {
-        console.log('error:', error);
+        console.log("error:", error);
       });
 
-    navigate('/design');
+    navigate("/design");
   };
 
   return (
@@ -121,7 +130,7 @@ const PosterForm = () => {
               multiple
               aria-multiselectable
               accept="image/*"
-              style={{ display: 'none' }}
+              style={{ display: "none" }}
               onChange={handleImageUpload}
             />
             <Images showImages={showImages} />
@@ -152,7 +161,7 @@ const PosterForm = () => {
         </AllTextInputWrapper>
       </FormWrapper>
 
-      <div style={{ textAlign: 'center' }}>
+      <div style={{ textAlign: "center" }}>
         <Button type="submit" fontSize="18px" onClick={handleSubmitForm}>
           <span>NEXT</span>
         </Button>
@@ -163,7 +172,7 @@ const PosterForm = () => {
 
 const TextWhite = styled.p`
   color: white;
-  font-family:"SCDream4";
+  font-family: "SCDream4";
 `;
 
 const AllWrapper = styled.div`

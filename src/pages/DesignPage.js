@@ -29,19 +29,14 @@ const DesignPage = () => {
     var url = new URL("http://localhost:5000/recommended-design");
     var params = { adj: selectedAdj };
     url.search = new URLSearchParams(params).toString();
-
-    // fetch(`http://localhost:5000/recommended-design?adj=${adj}`, {
+    navigate('/poster');
     let response = await fetch(url, {
-    // fetch("http://localhost:5000/recommended-design", {
       method: "GET",
-      // params: {
-      //   adj: selectedAdj,
-      // },
     })
       .catch((error) => {
         console.log("error:", error);
       });
-      navigate('/poster');
+      
       let data = await response.json();
       localStorage.setItem('design_result', JSON.stringify(data));
     };
