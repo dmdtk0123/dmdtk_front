@@ -8,8 +8,6 @@ import MainImg from "../images/MainPageImg2"
 import MainImg2 from "../images/MainPageImg3"  //프로젝트 소개 이미지
 import MainImg3 from "../images/MainPageImg4"  //프로젝트 이용방법 이미지
 
-
-
 const DivWrapper = styled.div`
     display: flex;
     flex-direction: column;

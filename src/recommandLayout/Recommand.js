@@ -4,18 +4,36 @@ import { Stage, Layer, Circle } from "react-konva";
 
 import theme from "../styles/theme";
 
-import RecommendColorImg from "../images/RecommendColor"; //추천 컬러 이미지
-import RecommendWriteImg from "../images/RecommendWrite"; //추천 컬러 이미지
+import WarmFontImg from "../images/warm_font"; //추천 컬러 이미지
+import ModernFontImg from "../images/modern_font"; //추천 컬러 이미지
+import ColorfulFontImg from "../images/colorful_font";
+import CuteFontImg from "../images/RecommendWrite";
 
-const Recommand = () => {
+const Recommand = ({ fontStyle }) => {
   const designResult = JSON.parse(localStorage.getItem("design_result"));
 
   const color = designResult["color"];
   const designAdj = designResult["adj"];
   const quadrant = designResult["quadrant"];
 
-  
+  const rendering = () => {
+    switch (quadrant) {
+        case "1":
+          return <CuteFontImg />;
 
+        case "2":
+        return <ColorfulFontImg />;
+
+        case "3":
+            return <ModernFontImg />;
+
+        case "4":
+            return <WarmFontImg />;
+
+        default:
+            return;
+    }
+  };
 
   return (
     <>
@@ -52,7 +70,7 @@ const Recommand = () => {
       </Stage>
 
       <ImageInputWrapper>추천 글꼴</ImageInputWrapper>
-      {/* <div>{rendering()}</div>; */}
+      <div>{rendering()}</div>
     </>
   );
 };

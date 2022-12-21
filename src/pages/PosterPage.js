@@ -10,6 +10,39 @@ import Recommand from "../recommandLayout/Recommand";
 const PosterPage = () => {
   // 준비 상태 확인(서버 결과가 들어왔는지 확인 => 서버 동작이 모두 끝났는지 확인)
   const [isReady, setIsReady] = useState(false);
+  
+  // 폰트 적용
+  const quadrant1 = ["NanumMyeongjoEB", "NanumMyeongjoR"];
+  const quadrant2 = ["JUA", "Cafe24Simplehae"];
+  const quadrant3 = ["Jalnan", "Cafe24PrettyNight"];
+  const quadrant4 = ["GmarketSansM", "Cafe24Simplehae"];
+
+  const designResult = JSON.parse(localStorage.getItem("design_result"));
+  const quadrant = designResult["quadrant"];
+  const [fontStyle, setFontStyle] = useState([]);
+
+  const rendering = () => {
+    switch (quadrant) {
+        case "1":
+          setFontStyle(quadrant1);
+          break;
+
+        case "2":
+          setFontStyle(quadrant2);
+            break;
+
+        case "3":
+          setFontStyle(quadrant3);
+            break;
+
+        case "4":
+          setFontStyle(quadrant4);
+          break;
+          
+          default: 
+          return;
+    }
+  };
 
   const getData = async () => {
     setIsReady(false);
@@ -21,6 +54,7 @@ const PosterPage = () => {
         await new Promise((resolve, reject) => setTimeout(resolve, 30000));
         console.log("30s");
       } else {
+        rendering();
         setIsReady(true);
       }
     } catch (error) {
@@ -46,7 +80,7 @@ const PosterPage = () => {
                 <Canvas />
               </div>
               <div style={{padding: "150px"}}>
-                <Recommand />
+                <Recommand fontStyle={fontStyle}/>
               </div>
             </Body>
             <div></div>
