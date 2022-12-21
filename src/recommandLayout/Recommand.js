@@ -70,7 +70,7 @@ const Recommand = ({ fontStyle }) => {
       </Stage>
 
       <ImageInputWrapper>추천 글꼴</ImageInputWrapper>
-      <div>{rendering()}</div>
+      <CuteFontImg />
     </>
   );
 };
