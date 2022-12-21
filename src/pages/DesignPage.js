@@ -41,10 +41,9 @@ const DesignPage = () => {
       .catch((error) => {
         console.log("error:", error);
       });
+      navigate('/poster');
       let data = await response.json();
       localStorage.setItem('design_result', JSON.stringify(data));
-
-      navigate('/poster', { isReady: false });
     };
 
   return (
