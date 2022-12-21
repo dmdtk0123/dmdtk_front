@@ -11,49 +11,48 @@ const Recommand = () => {
   const designResult = JSON.parse(localStorage.getItem("design_result"));
 
   const color = designResult["color"];
-  const titleFont = designResult["title_font"];
+  const designAdj = designResult["adj"];
+  const quadrant = designResult["quadrant"];
+
+  
+
 
   return (
     <>
       <SImageInputWrapper>디자인</SImageInputWrapper>
       <h3 class="SCDream4" style={{ color: "white" }}>
-        귀여운
-      </h3>
-      <h3 class="SCDream4" style={{ color: "white" }}>
-        경쾌한
+        {designAdj}
       </h3>
 
       <ImageInputWrapper>추천 색상</ImageInputWrapper>
       <Stage width={1000} height={150}>
         <Layer>
-            <Circle
+          <Circle
             x={50}
             y={100}
             fill={`rgb(${color[0][0]},${color[0][1]},${color[0][2]})`}
             width={80}
             height={80}
-            />
-            <Circle
+          />
+          <Circle
             x={150}
             y={100}
             fill={`rgb(${color[1][0]},${color[1][1]},${color[1][2]})`}
             width={80}
             height={80}
-            />
-            <Circle
+          />
+          <Circle
             x={250}
             y={100}
             fill={`rgb(${color[2][0]},${color[2][1]},${color[2][2]})`}
             width={80}
             height={80}
-            />
+          />
         </Layer>
       </Stage>
 
       <ImageInputWrapper>추천 글꼴</ImageInputWrapper>
-      <h3>{designResult ? designResult["body_font"] : "none"}</h3>
-      <h3>{designResult ? designResult["title_font"] : "none"}</h3>
-      <RecommendWriteImg />
+      {/* <div>{rendering()}</div>; */}
     </>
   );
 };
